@@ -40,6 +40,11 @@ export function viewToModelStyleAttribute( styles ) {
             return;
         }
 
+        // ...and the `videoStyle` attribute is allowed for that element, otherwise stop conversion early.
+		if ( !conversionApi.schema.checkAttribute( modelVideoElement, 'videoStyle' ) ) {
+			return;
+		}
+
         for ( const style of nonDefaultStyles[ modelVideoElement.name ] ) {
             if ( conversionApi.consumable.consume( viewElement, { classes: style.className } ) ) {
                 conversionApi.writer.setAttribute( 'videoStyle', style.name, modelVideoElement );
