@@ -57,13 +57,19 @@ export default class VideoUtils extends Plugin {
     }
 
     getClosestSelectedVideoWidget(selection) {
+        const selectionPosition = selection.getFirstPosition();
+
+		if ( !selectionPosition ) {
+			return null;
+		}
+
         const viewElement = selection.getSelectedElement();
 
         if ( viewElement && this.isVideoWidget( viewElement ) ) {
             return viewElement;
         }
 
-        let parent = selection.getFirstPosition().parent;
+        let parent = selectionPosition.parent;
 
         while ( parent ) {
             if ( parent.is( 'element' ) && this.isVideoWidget( parent ) ) {
