@@ -34,6 +34,9 @@ export default class VideoEditing extends Plugin {
 							if ( viewVideo.hasAttribute( 'width' ) ) {
 								value.width = viewVideo.getAttribute( 'width' );
 							}
+							if ( viewVideo.hasAttribute( 'data-document-id' ) ) {
+								value['data-document-id'] = viewVideo.getAttribute( 'data-document-id' );
+							}
 
 							return value;
 						}
