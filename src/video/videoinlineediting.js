@@ -29,7 +29,7 @@ export default class VideoInlineEditing extends Plugin {
             isObject: true,
             isInline: true,
             allowWhere: '$text',
-            allowAttributes: [ 'src' ]
+            allowAttributes: [ 'src', 'data-document-id' ]
         } );
 
         schema.addChildCheck( ( context, childDefinition ) => {
@@ -69,11 +69,13 @@ export default class VideoInlineEditing extends Plugin {
 
         conversion.for( 'downcast' )
             .add( downcastVideoAttribute( videoUtils, 'videoInline', 'src' ) );
+        conversion.for( 'downcast' )
+            .add( downcastVideoAttribute( videoUtils, 'videoInline', 'data-document-id' ) );
 
         conversion.for( 'upcast' )
             .elementToElement( {
                 view: getVideoViewElementMatcher( editor, 'videoInline' ),
-                model: ( viewVideo, { writer } ) => writer.createElement( 'videoInline', { src: viewVideo.getAttribute( 'src' ) } )
+                model: ( viewVideo, { writer } ) => writer.createElement( 'videoInline', { src: viewVideo.getAttribute( 'src' ), 'data-document-id': viewVideo.getAttribute( 'data-document-id' ) } )
             } );
     }
 
