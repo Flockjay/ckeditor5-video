@@ -73,7 +73,7 @@ export default class VideoInlineEditing extends Plugin {
         conversion.for( 'upcast' )
             .elementToElement( {
                 view: getVideoViewElementMatcher( editor, 'videoInline' ),
-                model: ( viewVideo, { writer } ) => writer.createElement( 'videoInline', { src: viewVideo.getAttribute( 'src' ) } )
+                model: ( viewVideo, { writer } ) => writer.createElement( 'videoInline', { src: viewVideo.getAttribute( 'src' ), 'data-document-id': viewVideo.getAttribute( 'data-document-id' ) } )
             } );
     }
 
