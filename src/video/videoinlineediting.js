@@ -29,7 +29,7 @@ export default class VideoInlineEditing extends Plugin {
             isObject: true,
             isInline: true,
             allowWhere: '$text',
-            allowAttributes: [ 'src' ]
+            allowAttributes: [ 'src', 'data-document-id' ]
         } );
 
         schema.addChildCheck( ( context, childDefinition ) => {

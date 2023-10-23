@@ -31,7 +31,7 @@ export default class VideoBlockEditing extends Plugin {
             isObject: true,
             isBlock: true,
             allowWhere: '$block',
-            allowAttributes: [ 'src' ]
+            allowAttributes: [ 'src', 'data-document-id' ]
         } );
 
         this._setupConversion();
