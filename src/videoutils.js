@@ -32,8 +32,6 @@ export default class VideoUtils extends Plugin {
         };
 
         for ( const attributeName in attributes ) {
-            console.log(attributeName)
-            if (attributeName === 'data-document-id') continue;
             if ( !model.schema.checkAttribute( videoType, attributeName ) ) {
                 delete attributes[ attributeName ];
             }
