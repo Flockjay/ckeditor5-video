@@ -65,6 +65,8 @@ export default class VideoBlockEditing extends Plugin {
 
         conversion.for( 'downcast' )
             .add( downcastVideoAttribute( videoUtils, 'videoBlock', 'src' ) );
+        conversion.for( 'downcast' )
+            .add( downcastVideoAttribute( videoUtils, 'videoBlock', 'data-document-id' ) );
 
         conversion.for( 'upcast' )
             .elementToElement( {

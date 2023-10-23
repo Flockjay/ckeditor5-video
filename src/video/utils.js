@@ -36,7 +36,7 @@ export function getVideoViewElementMatcher( editor, matchVideoType ) {
 			return null;
 		}
 
-		return { name: true, attributes: [ 'src' ] };
+		return { name: true, attributes: [ 'src', 'data-document-id' ] };
 	};
 }
 

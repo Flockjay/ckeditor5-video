@@ -69,6 +69,8 @@ export default class VideoInlineEditing extends Plugin {
 
         conversion.for( 'downcast' )
             .add( downcastVideoAttribute( videoUtils, 'videoInline', 'src' ) );
+        conversion.for( 'downcast' )
+            .add( downcastVideoAttribute( videoUtils, 'videoInline', 'data-document-id' ) );
 
         conversion.for( 'upcast' )
             .elementToElement( {
