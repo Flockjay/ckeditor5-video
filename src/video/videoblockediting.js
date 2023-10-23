@@ -69,7 +69,7 @@ export default class VideoBlockEditing extends Plugin {
         conversion.for( 'upcast' )
             .elementToElement( {
                 view: getVideoViewElementMatcher( editor, 'videoBlock' ),
-                model: ( viewVideo, { writer } ) => writer.createElement( 'videoBlock', { src: viewVideo.getAttribute( 'src' ) } )
+                model: ( viewVideo, { writer } ) => writer.createElement( 'videoBlock', { src: viewVideo.getAttribute( 'src' ), 'data-document-id': viewVideo.getAttribute( 'data-document-id' ) } )
             } )
             .add( upcastVideoFigure( videoUtils ) );
     }
