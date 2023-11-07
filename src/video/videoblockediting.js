@@ -31,7 +31,7 @@ export default class VideoBlockEditing extends Plugin {
             isObject: true,
             isBlock: true,
             allowWhere: '$block',
-            allowAttributes: [ 'src', 'data-document-id' ]
+            allowAttributes: [ 'src', 'data-document-id', 'poster' ]
         } );
 
         this._setupConversion();
@@ -67,11 +67,13 @@ export default class VideoBlockEditing extends Plugin {
             .add( downcastVideoAttribute( videoUtils, 'videoBlock', 'src' ) );
         conversion.for( 'downcast' )
             .add( downcastVideoAttribute( videoUtils, 'videoBlock', 'data-document-id' ) );
+        conversion.for( 'downcast' )
+            .add( downcastVideoAttribute( videoUtils, 'videoBlock', 'poster' ) );
 
         conversion.for( 'upcast' )
             .elementToElement( {
                 view: getVideoViewElementMatcher( editor, 'videoBlock' ),
-                model: ( viewVideo, { writer } ) => writer.createElement( 'videoBlock', { src: viewVideo.getAttribute( 'src' ), 'data-document-id': viewVideo.getAttribute( 'data-document-id' ) } )
+                model: ( viewVideo, { writer } ) => writer.createElement( 'videoBlock', { src: viewVideo.getAttribute( 'src' ), 'data-document-id': viewVideo.getAttribute( 'data-document-id' ), poster: viewVideo.getAttribute( 'poster' ) } )
             } )
             .add( upcastVideoFigure( videoUtils ) );
     }

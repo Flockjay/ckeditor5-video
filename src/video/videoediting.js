@@ -37,6 +37,9 @@ export default class VideoEditing extends Plugin {
 							if ( viewVideo.hasAttribute( 'data-document-id' ) ) {
 								value['data-document-id'] = viewVideo.getAttribute( 'data-document-id' );
 							}
+							if ( viewVideo.hasAttribute( 'poster' ) ) {
+								value['poster'] = viewVideo.getAttribute( 'poster' );
+							}
 
 							return value;
 						}
