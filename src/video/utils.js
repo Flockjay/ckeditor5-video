@@ -18,6 +18,7 @@ export function getVideoViewElementMatcher( editor, matchVideoType ) {
 			name: 'video',
 			attributes: {
 				'data-document-id': true,
+				'poster': true,
 				src: true
 			}
 		};
@@ -36,7 +37,7 @@ export function getVideoViewElementMatcher( editor, matchVideoType ) {
 			return null;
 		}
 
-		return { name: true, attributes: [ 'src', 'data-document-id' ] };
+		return { name: true, attributes: [ 'src', 'data-document-id', 'poster' ] };
 	};
 }
 
