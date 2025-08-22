@@ -16,11 +16,15 @@ export function upcastVideoFigure( videoUtils ) {
 			return;
 		}
 
+		// Consume the figure to prevent other converters from processing it again.
+		conversionApi.consumable.consume( data.viewItem, { name: true, classes: 'video' } );
+
 		const conversionResult = conversionApi.convertItem( viewVideo, data.modelCursor );
 
 		const modelVideo = first( conversionResult.modelRange.getItems() );
 
 		if ( !modelVideo ) {
+			conversionApi.consumable.revert( data.viewItem, { name: true, classes: 'video' } );
 			return;
 		}
 
